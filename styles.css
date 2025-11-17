@@ -1,0 +1,436 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Color Palette */
+:root {
+    --light-blue: #b8e6f5;
+    --light-green: #c8e6c9;
+    --light-gray: #e0e0e0;
+    --dark-text: #333333;
+    --accent: #ff9999;
+}
+
+/* Navigation */
+.manga-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-bottom: 3px solid var(--dark-text);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 600;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.nav-link:hover {
+    background: var(--light-blue);
+    border-color: var(--dark-text);
+    transform: translateY(-2px);
+}
+
+/* Manga Page Sections */
+.manga-page {
+    min-height: 100vh;
+    padding: 100px 20px 60px;
+    position: relative;
+    border-bottom: 4px solid var(--dark-text);
+}
+
+.blue-page {
+    background: var(--light-blue);
+}
+
+.green-page {
+    background: var(--light-green);
+}
+
+.gray-page {
+    background: var(--light-gray);
+}
+
+.page-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.page-number {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    background: white;
+    border-radius: 20px;
+    border: 2px solid var(--dark-text);
+}
+
+/* About Section */
+.about-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.photo-frame {
+    background: white;
+    padding: 15px;
+    border-radius: 20px;
+    border: 3px solid var(--dark-text);
+    text-align: center;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid var(--dark-text);
+    margin-bottom: 10px;
+    background: var(--light-gray);
+    min-height: 300px;
+    object-fit: cover;
+}
+
+.photo-caption {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--dark-text);
+    margin-top: 10px;
+}
+
+.bio-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: 3px solid var(--dark-text);
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.manga-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--dark-text);
+    font-weight: 700;
+}
+
+.bio-text p {
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.manga-button {
+    padding: 12px 24px;
+    background: var(--light-green);
+    color: var(--dark-text);
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid var(--dark-text);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.manga-button:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--dark-text);
+    padding: 15px;
+    background: white;
+    border-radius: 25px;
+    border: 3px solid var(--dark-text);
+    display: inline-block;
+    width: 100%;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Content Boxes (Research) */
+.content-box {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 3px solid var(--dark-text);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.content-box h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+/* Project Cards */
+.project-card {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    border: 3px solid var(--dark-text);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.15);
+}
+
+.project-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.project-description {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.project-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.tag {
+    padding: 6px 14px;
+    background: var(--light-blue);
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 2px solid var(--dark-text);
+}
+
+.project-link {
+    color: var(--dark-text);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--light-green);
+    border-radius: 15px;
+    border: 2px solid var(--dark-text);
+    transition: all 0.3s ease;
+}
+
+.project-link:hover {
+    background: var(--accent);
+    transform: translateX(5px);
+}
+
+/* Publications */
+.publication-item {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 3px solid var(--dark-text);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.publication-item h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.pub-authors {
+    color: #555;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.pub-venue {
+    color: #777;
+    font-style: italic;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.pub-links {
+    display: flex;
+    gap: 10px;
+}
+
+.small-button {
+    padding: 6px 16px;
+    background: var(--light-gray);
+    color: var(--dark-text);
+    text-decoration: none;
+    border-radius: 12px;
+    border: 2px solid var(--dark-text);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.small-button:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Teaching */
+.teaching-item {
+    background: white;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 3px solid var(--dark-text);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+}
+
+.teaching-item h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: var(--dark-text);
+}
+
+.teaching-role {
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.teaching-desc {
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.teaching-period {
+    color: #888;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* Contact */
+.contact-container {
+    background: white;
+    padding: 40px;
+    border-radius: 25px;
+    border: 3px solid var(--dark-text);
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.contact-message {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.contact-info {
+    margin-bottom: 30px;
+}
+
+.contact-detail {
+    padding: 12px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--dark-text);
+}
+
+.contact-icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-button {
+    padding: 12px 24px;
+    background: var(--light-blue);
+    color: var(--dark-text);
+    text-decoration: none;
+    border-radius: 20px;
+    border: 2px solid var(--dark-text);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-button:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .photo-frame {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .manga-title {
+        font-size: 26px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .nav-container {
+        gap: 5px;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
