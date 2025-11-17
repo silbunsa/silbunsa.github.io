@@ -5,19 +5,19 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    color: #333;
+    /* Use a clean serif font for the main body text for readability */
+    font-family: 'Playfair Display', Georgia, serif; 
+    line-height: 1.7; /* Increased line-height for better readability */
+    color: var(--dark-text);
     scroll-behavior: smooth;
 }
-
 /* Color Palette */
 :root {
     --light-blue: #b8e6f5;
     --light-green: #c8e6c9;
     --light-gray: #e0e0e0;
     --dark-text: #333333;
-    --accent: #ff9999;
+    --accent: #ffb6c1;
 }
 
 /* Navigation */
@@ -66,8 +66,113 @@ body {
 }
 
 .blue-page {
-    background: var(--light-blue);
+    background: #f0f8ff; /* Alice blue - newspaper-like */
+    border: 3px solid #2c5aa0; /* Dark blue border */
+    transform: rotate(0.5deg);
 }
+
+.chi-image {
+    position: absolute;
+    z-index: 5;
+    filter: drop-shadow(4px 4px 0 rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.chi-image:hover {
+    transform: scale(3.05) rotate(2deg);
+}
+
+/* Specific positions for Page 1 Chi images */
+.chi-1 {
+    left: -200px;
+    top: 0%;
+    width: 180px;
+    transform: rotate(5deg);
+}
+
+.chi-2 {
+    left: -200px;
+    top: 50%;
+    width: 180px;
+    transform: rotate(-5deg);
+}
+.chi-9 {
+    left: -200px;
+    top: 85%;
+    width: 180px;
+    transform: rotate(0deg);
+}
+
+.chi-3 {
+    right: -200px;
+    top: 0%;
+    width: 180px;
+    transform: rotate(15deg);
+}
+
+.chi-4 {
+    right: -200px;
+    top: 50%;
+    width: 180px;
+    transform: rotate(-15deg);
+}
+
+.chi-5 {
+    left: 75%;
+    bottom: -80px;
+    width: 160px;
+    transform: translateX(-10%) rotate(-3deg);
+}
+
+.chi-7 {
+    left: 55%;
+    bottom: -80px;
+    width: 160px;
+    transform: translateX(-10%) rotate(-3deg);
+}
+
+.chi-8 {
+    left: 95%;
+    bottom: -80px;
+    width: 160px;
+    transform: translateX(-15%) rotate(5deg);
+}
+
+
+.chi-6 {
+    left: 40%;
+    bottom: -80px;
+    width: 160px;
+    transform: translateX(-50%) rotate(3deg);
+}
+
+.chi-10 {
+    left: 0%;
+    bottom: -150px;
+    width: 160px;
+    transform: translateX(-10%) rotate(3deg);
+}
+.chi-11 {
+    left: 15%;
+    bottom: -150px;
+    width: 160px;
+    transform: translateX(-6%) rotate(-3deg);
+}
+
+.chi-12 {
+    right: -22%;
+    bottom: -150px;
+    width: 160px;
+    transform: translateX(10%) rotate(-3deg);
+}
+
+.chi-13 {
+    right: 62%;
+    bottom: 150px;
+    width: 160px;
+    transform: translateX(10%) rotate(-3deg);
+}
+
 
 .green-page {
     background: var(--light-green);
@@ -96,24 +201,22 @@ body {
 
 /* About Section */
 .about-container {
+    position: relative;
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 40px;
     align-items: start;
 }
 
+
 .photo-frame {
-    background: white;
-    padding: 15px;
-    border-radius: 20px;
-    border: 3px solid var(--dark-text);
-    text-align: center;
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+      position: relative;
+    z-index: 10;
 }
 
 .profile-photo {
-    width: 100%;
-    border-radius: 15px;
+    width: 90%;
+    border-radius: 20px;
     border: 2px solid var(--dark-text);
     margin-bottom: 10px;
     background: var(--light-gray);
@@ -180,15 +283,31 @@ body {
     text-align: center;
     margin-bottom: 40px;
     color: var(--dark-text);
-    padding: 15px;
+    padding: 20px 30px;
     background: white;
-    border-radius: 25px;
+    border-radius: 8px;
     border: 3px solid var(--dark-text);
     display: inline-block;
-    width: 100%;
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+    width: auto;
+    max-width: 90%;
+    position: relative;
+    transform: rotate(-1deg);
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.15);
+    
+    /* Newspaper texture effect */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.6) 50%, transparent 80%),
+        linear-gradient(45deg, transparent 49%, rgba(0,0,0,0.03) 50%, transparent 51%);
+    background-size: 100% 100%, 20px 20px;
+    
+    /* Torn paper edges */
+    clip-path: polygon(
+        0% 10px, 10px 0%,
+        calc(100% - 10px) 0%, 100% 10px,
+        100% calc(100% - 10px), calc(100% - 10px) 100%,
+        10px 100%, 0% calc(100% - 10px)
+    );
 }
-
 /* Content Boxes (Research) */
 .content-box {
     background: white;
@@ -411,7 +530,16 @@ body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
+        .section-title {
+        font-size: 28px;
+        padding: 15px 20px;
+        transform: rotate(0deg) !important; /* Remove rotation on mobile */
+        max-width: 95%;
+    }
     
+    .section-title::before {
+        display: none; /* Remove shadow on mobile */
+    }
     .photo-frame {
         max-width: 300px;
         margin: 0 auto;
@@ -433,4 +561,108 @@ body {
         padding: 8px 12px;
         font-size: 14px;
     }
+}
+
+
+/* --- PATCHWORK STYLES --- */
+
+/* Patch 1: Serif, Bold */
+.patch-bold {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+    background-color: var(--light-blue); /* Subtle highlight */
+    padding: 3px 6px;
+    border: 2px solid var(--dark-text);
+    box-shadow: 2px 2px 0 var(--dark-text);
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Patch 2: Monospace/Typewriter */
+.patch-mono {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    font-size: 1.1em;
+    background-color: var(--accent); /* Stronger highlight */
+    padding: 2px 5px;
+    border: 2px solid var(--dark-text);
+    box-shadow: 1px 1px 0 var(--dark-text);
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Patch 3: Classic Serif, Different Weight */
+.patch-classic {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--light-gray);
+    padding: 4px 8px;
+    border: 2px solid var(--dark-text);
+    box-shadow: 3px 3px 0 var(--dark-text);
+    display: inline-block;
+    line-height: 1;
+}
+
+/* Individual patch styles for different sections */
+#research .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+    background: #fffaf0; /* Floral white */
+    border: 3px solid #8b4513; /* Saddle brown */
+    transform: rotate(-1.5deg);
+}
+
+#projects .section-title {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+    background: #f0fff0; /* Honeydew */
+    border: 3px solid #006400; /* Dark green */
+    transform: rotate(1.2deg);
+}
+
+#publications .section-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 400;
+    background: #f8f8ff; /* Ghost white */
+    border: 3px solid #4b0082; /* Indigo */
+    transform: rotate(-0.8deg);
+}
+
+#teaching .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-style: normal;
+    background: #fff5ee; /* Seashell */
+    border: 3px solid #8b0000; /* Dark red */
+    transform: rotate(0.7deg);
+}
+
+#contact .section-title {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 600;
+    background: #f0f8ff; /* Alice blue */
+    border: 3px solid #191970; /* Midnight blue */
+    transform: rotate(-1deg);
+}
+
+/* Add subtle shadow for depth */
+.section-title::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: -5px;
+    bottom: -5px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    border-radius: 8px;
+    clip-path: polygon(
+        0% 10px, 10px 0%,
+        calc(100% - 10px) 0%, 100% 10px,
+        100% calc(100% - 10px), calc(100% - 10px) 100%,
+        10px 100%, 0% calc(100% - 10px)
+    );
 }
