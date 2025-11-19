@@ -16,7 +16,7 @@ body {
     --light-blue: #b8e6f5;
     --light-green: #c8e6c9;
     --light-gray: #e0e0e0;
-    --dark-text: #333333;
+    --dark-text: black;
     --accent: #ffb6c1;
 }
 
@@ -66,9 +66,209 @@ body {
 }
 
 .blue-page {
-    background: #f0f8ff; /* Alice blue - newspaper-like */
-    border: 3px solid #2c5aa0; /* Dark blue border */
+    background: linear-gradient(135deg, #f0f8ff 0%, #e6f4ff 50%, #fff0f5 100%);
+    border: 5px solid var(--dark-text);
     transform: rotate(0.5deg);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 100px rgba(184, 230, 245, 0.3);
+}
+
+/* Static pattern background for blue-page with fade animation */
+.blue-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(184, 230, 245, 0.4) 35px,
+            rgba(184, 230, 245, 0.4) 70px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 35px,
+            rgba(200, 230, 201, 0.3) 35px,
+            rgba(200, 230, 201, 0.3) 70px
+        ),
+        radial-gradient(circle at 20% 50%, rgba(255, 182, 193, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(184, 230, 245, 0.3) 0%, transparent 50%);
+    animation: patternFade 16s ease-in-out infinite;
+}
+
+/* Pattern Layer 2 - Pink & Yellow */
+.blue-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(255, 182, 193, 0.4) 35px,
+            rgba(255, 182, 193, 0.4) 70px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 35px,
+            rgba(255, 235, 59, 0.3) 35px,
+            rgba(255, 235, 59, 0.3) 70px
+        ),
+        radial-gradient(circle at 30% 70%, rgba(255, 182, 193, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255, 235, 59, 0.3) 0%, transparent 50%);
+    animation: patternFade2 16s ease-in-out infinite;
+}
+
+/* Pattern Layer 3 - Purple & Mint */
+.blue-page .page-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(200, 162, 200, 0.35) 35px,
+            rgba(200, 162, 200, 0.35) 70px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 35px,
+            rgba(179, 229, 252, 0.35) 35px,
+            rgba(179, 229, 252, 0.35) 70px
+        ),
+        radial-gradient(circle at 60% 40%, rgba(200, 162, 200, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(179, 229, 252, 0.25) 0%, transparent 50%);
+    animation: patternFade3 16s ease-in-out infinite;
+}
+
+/* Pattern Layer 4 - Peach & Lavender */
+.blue-page .page-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 35px,
+            rgba(255, 218, 185, 0.4) 35px,
+            rgba(255, 218, 185, 0.4) 70px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 35px,
+            rgba(230, 230, 250, 0.35) 35px,
+            rgba(230, 230, 250, 0.35) 70px
+        ),
+        radial-gradient(circle at 50% 50%, rgba(255, 218, 185, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(230, 230, 250, 0.3) 0%, transparent 50%);
+    animation: patternFade4 16s ease-in-out infinite;
+}
+
+/* Animation for Pattern 1 - Blue & Green (0-8s visible) */
+@keyframes patternFade {
+    0% {
+        opacity: 0;
+    }
+    12.5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Animation for Pattern 2 - Pink & Yellow (8-16s visible) */
+@keyframes patternFade2 {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    37.5% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Animation for Pattern 3 - Purple & Mint (16-24s visible) */
+@keyframes patternFade3 {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    62.5% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Animation for Pattern 4 - Peach & Lavender (24-32s visible) */
+@keyframes patternFade4 {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    87.5% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Ensure content stays above the pattern */
+.blue-page .page-content,
+.blue-page .page-number {
+    position: relative;
+    z-index: 2;
 }
 
 .chi-image {
@@ -117,35 +317,6 @@ body {
     transform: rotate(-15deg);
 }
 
-.chi-5 {
-    left: 75%;
-    bottom: -80px;
-    width: 160px;
-    transform: translateX(-10%) rotate(-3deg);
-}
-
-.chi-7 {
-    left: 55%;
-    bottom: -80px;
-    width: 160px;
-    transform: translateX(-10%) rotate(-3deg);
-}
-
-.chi-8 {
-    left: 95%;
-    bottom: -80px;
-    width: 160px;
-    transform: translateX(-15%) rotate(5deg);
-}
-
-
-.chi-6 {
-    left: 40%;
-    bottom: -80px;
-    width: 160px;
-    transform: translateX(-50%) rotate(3deg);
-}
-
 .chi-10 {
     left: 0%;
     bottom: -150px;
@@ -167,19 +338,103 @@ body {
 }
 
 .chi-13 {
-    right: 62%;
-    bottom: 150px;
+    right: -18%;
+    bottom: 0px;
     width: 160px;
     transform: translateX(10%) rotate(-3deg);
 }
 
 
-.green-page {
-    background: var(--light-green);
+/* Static nature emoji pattern - Layer 1 */
+.green-page::before {
+    content: '🍃 🌸 🍊 🌿 🌺 🍋 🍀 🌼 🍎 🌱 🌻 🍓 🌾 🌷 🍑 🌿 🌹 🍇 🍃 🏵️ 🌸 🍊 🌿 🌺 🍋 🍀 🌼 🍎 🌱 🌻 🍓 🌾 🌷 🍑 🌹 🍇 🍃 🏵️ 🌸 🍊 🌿 🌺 🍋 🍀 🌼 🍎 🌱 🌻 🍓 🌾 🌷 🍑 🌿 🌹 🍇 🍃 🏵️ 🌸 🍊 🌿 🌺 🍋 🍀 🌼 🍎 🌱 🌻 🍓';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    font-size: 50px;
+    line-height: 120px;
+    word-spacing: 60px;
+    letter-spacing: 30px;
+    text-align: justify;
+    opacity: 0;
+    animation: fadeInOut1 6s ease-in-out infinite;
 }
 
-.gray-page {
-    background: var(--light-gray);
+/* Layer 2 - Different positions */
+.green-page::after {
+    content: '🌿 🌼 🍉 🍃 🌸 🥝 🌱 🌺 🍒 🌾 🌻 🍊 🍀 🌷 🍋 🌿 🏵️ 🍎 🌱 🌹 🌿 🌼 🍉 🍃 🌸 🥝 🌱 🌺 🍒 🌾 🌻 🍊 🍀 🌷 🍋 🌿 🏵️ 🍎 🌱 🌹 🌼 🍉 🍃 🌸 🥝 🌱 🌺 🍒 🌾 🌻 🍊 🍀 🌷 🍋 🌿 🏵️ 🍎 🌱 🌹 🌼 🍉 🍃 🌸 🥝 🌱 🌺 🍒';
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    font-size: 45px;
+    line-height: 130px;
+    word-spacing: 70px;
+    letter-spacing: 35px;
+    text-align: justify;
+    opacity: 0;
+    animation: fadeInOut2 6s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+/* Simple fade in and out - NO MOVEMENT */
+@keyframes fadeInOut1 {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.15;
+    }
+}
+
+@keyframes fadeInOut2 {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.12;
+    }
+}
+
+/* Third layer */
+.green-page .page-content {
+    position: relative;
+    z-index: 2;
+}
+
+.green-page .page-content::before {
+    content: '🌸 🍓 🌿 🌺 🍑 🍃 🌼 🍇 🌱 🌻 🍋 🌾 🌷 🍉 🍀 🏵️ 🍊 🌹 🥝 🍒 🌸 🍓 🌿 🌺 🍑 🍃 🌼 🍇 🌱 🌻 🍋 🌾 🌷 🍉 🍀 🏵️ 🍊 🌹 🥝 🍒 🌸 🍓 🌿 🌺 🍑 🍃 🌼 🍇 🌱 🌻 🍋 🌾 🌷 🍉 🍀 🏵️ 🍊 🌹 🥝 🍒 🌸 🍓 🌿 🌺 🍑';
+    position: absolute;
+    top: -50px;
+    left: -20px;
+    width: calc(100% + 100px);
+    height: calc(100% + 100px);
+    z-index: -1;
+    pointer-events: none;
+    font-size: 55px;
+    line-height: 110px;
+    word-spacing: 50px;
+    letter-spacing: 25px;
+    text-align: justify;
+    opacity: 0;
+    animation: fadeInOut3 6s ease-in-out infinite;
+    animation-delay: 4s;
+}
+
+@keyframes fadeInOut3 {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.18;
+    }
 }
 
 .page-content {
@@ -191,12 +446,24 @@ body {
     position: absolute;
     bottom: 20px;
     right: 40px;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 8px 16px;
-    background: white;
-    border-radius: 20px;
-    border: 2px solid var(--dark-text);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #ffeb3b 0%, #ffd54f 100%);
+    border-radius: 25px;
+    border: 4px solid var(--dark-text);
+    box-shadow: 
+        6px 6px 0 rgba(255, 182, 193, 0.5),
+        6px 6px 0 4px var(--dark-text);
+    transform: rotate(-5deg);
+    transition: all 0.3s ease;
+}
+
+.page-number:hover {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: 
+        8px 8px 0 rgba(184, 230, 245, 0.6),
+        8px 8px 0 4px var(--dark-text);
 }
 
 /* About Section */
@@ -210,18 +477,73 @@ body {
 
 
 .photo-frame {
-      position: relative;
+    position: relative;
     z-index: 10;
+    transform: rotate(3deg);
+    transition: all 0.3s ease;
+}
+
+.photo-frame:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+/* Decorative manga corners */
+.photo-frame::before {
+    content: '◆';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    font-size: 30px;
+    color: #ffb6c1;
+    text-shadow: 2px 2px 0 var(--dark-text);
+    z-index: 1;
+    animation: cornerFloat 3s ease-in-out infinite;
+}
+
+.photo-frame::after {
+    content: '◆';
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    font-size: 30px;
+    color: #b8e6f5;
+    text-shadow: 2px 2px 0 var(--dark-text);
+    z-index: 1;
+    animation: cornerFloat 3s ease-in-out infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes cornerFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(180deg);
+    }
 }
 
 .profile-photo {
     width: 90%;
-    border-radius: 20px;
-    border: 2px solid var(--dark-text);
+    border-radius: 25px;
+    border: 5px solid var(--dark-text);
     margin-bottom: 10px;
-    background: var(--light-gray);
+    background: linear-gradient(135deg, #fff9f0 0%, #ffe4f5 100%);
     min-height: 300px;
     object-fit: cover;
+    box-shadow: 
+        10px 10px 0 rgba(255, 182, 193, 0.5),
+        10px 10px 0 5px var(--dark-text),
+        20px 20px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.profile-photo:hover {
+    box-shadow: 
+        15px 15px 0 rgba(184, 230, 245, 0.6),
+        15px 15px 0 5px var(--dark-text),
+        25px 25px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
 }
 
 .photo-caption {
@@ -232,18 +554,91 @@ body {
 }
 
 .bio-content {
-    background: white;
+    background: linear-gradient(135deg, #fff9f0 0%, #ffe4f5 100%);
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 25px;
+    border: 4px solid var(--dark-text);
+    box-shadow: 
+        12px 12px 0 rgba(255, 182, 193, 0.5),
+        12px 12px 0 4px var(--dark-text);
+    position: relative;
+    transform: rotate(-1deg);
+    transition: all 0.3s ease;
+}
+
+.bio-content:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 
+        15px 15px 0 rgba(255, 182, 193, 0.7),
+        15px 15px 0 4px var(--dark-text);
+}
+
+/* Manga speed lines effect */
+.bio-content::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 40px;
+    height: 40px;
+    background: #ffeb3b;
+    border-radius: 50%;
     border: 3px solid var(--dark-text);
-    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+.bio-content::after {
+    content: '✨';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    font-size: 30px;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.7;
+    }
 }
 
 .manga-title {
-    font-size: 32px;
+    font-size: 38px;
     margin-bottom: 20px;
     color: var(--dark-text);
     font-weight: 700;
+    text-shadow: 
+        3px 3px 0 #ffb6c1,
+        6px 6px 0 #b8e6f5;
+    position: relative;
+    display: inline-block;
+    animation: titleBounce 3s ease-in-out infinite;
+}
+
+.manga-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, #ffb6c1, #b8e6f5, #c8e6c9);
+    border-radius: 4px;
+    border: 2px solid var(--dark-text);
+}
+
+@keyframes titleBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
 }
 
 .bio-text p {
@@ -260,20 +655,63 @@ body {
 
 .manga-button {
     padding: 12px 24px;
-    background: var(--light-green);
+    background: linear-gradient(135deg, #c8e6c9 0%, #a8d5ba 100%);
     color: var(--dark-text);
     text-decoration: none;
-    border-radius: 20px;
-    border: 2px solid var(--dark-text);
-    font-weight: 600;
+    border-radius: 25px;
+    border: 3px solid var(--dark-text);
+    font-weight: 700;
     transition: all 0.3s ease;
     display: inline-block;
+    position: relative;
+    box-shadow: 
+        5px 5px 0 rgba(255, 182, 193, 0.4),
+        5px 5px 0 3px var(--dark-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
 }
 
 .manga-button:hover {
-    background: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff9eb5 100%);
+    transform: translateY(-5px) rotate(-2deg);
+    box-shadow: 
+        8px 8px 0 rgba(184, 230, 245, 0.6),
+        8px 8px 0 3px var(--dark-text);
+}
+
+.manga-button:active {
+    transform: translateY(-2px) rotate(-1deg);
+    box-shadow: 
+        3px 3px 0 rgba(255, 182, 193, 0.4),
+        3px 3px 0 3px var(--dark-text);
+}
+
+/* Add cute icon effects */
+.manga-button::before {
+    content: '★';
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    font-size: 16px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.manga-button:hover::before {
+    opacity: 1;
+    left: -15px;
+    top: -15px;
+    animation: starTwinkle 0.6s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
 }
 
 /* Section Titles */
@@ -324,64 +762,164 @@ body {
     color: var(--dark-text);
 }
 
-/* Project Cards */
+/* Project Cards - Manga Pop-out Style with Horizontal Layout */
 .project-card {
-    background: white;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f8f4 100%);
     padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 20px;
-    border: 3px solid var(--dark-text);
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    margin-bottom: 30px;
+    border-radius: 25px;
+    border: 4px solid var(--dark-text);
+    box-shadow: 
+        10px 10px 0 rgba(200, 230, 201, 0.6),
+        10px 10px 0 4px var(--dark-text);
+    transition: all 0.3s ease;
+    position: relative;
+    transform: rotate(1deg);
+    display: flex;
+    gap: 25px;
+    align-items: stretch;
+    min-height:300px
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.15);
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow: 
+        15px 15px 0 rgba(184, 230, 245, 0.5),
+        15px 15px 0 4px var(--dark-text);
+}
+
+/* Project card decorative star */
+.project-card::before {
+    content: '⭐';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 35px;
+    animation: starRotate 4s ease-in-out infinite;
+}
+
+@keyframes starRotate {
+    0%, 100% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+}
+
+/* Project image container - Square on left */
+.project-image {
+    width: 250px;
+    height: 250px;
+    min-width: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid var(--dark-text);
+    box-shadow: 5px 5px 0 rgba(200, 230, 201, 0.4);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    align-self:flex-start;
+}
+
+.project-image:hover {
+    transform: scale(1.05);
+    box-shadow: 8px 8px 0 rgba(184, 230, 245, 0.5);
+}
+
+/* Project content wrapper */
+.project-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: space-between; /* Distribute space evenly */
+    min-height: 250px; /* Match image height for consistency */
 }
 
 .project-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 26px;
+    margin-bottom: 15px;
     color: var(--dark-text);
+    font-weight: 700;
+    text-shadow: 2px 2px 0 rgba(200, 230, 201, 0.5);
 }
 
 .project-description {
     margin-bottom: 15px;
     color: #555;
+    line-height: 1.6;
+    flex: 1; /* Allow description to take available space */
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Limit to 4 lines max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .project-tags {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 15px;
 }
 
 .tag {
-    padding: 6px 14px;
-    background: var(--light-blue);
-    border-radius: 15px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+    border-radius: 20px;
     font-size: 13px;
-    font-weight: 600;
-    border: 2px solid var(--dark-text);
+    font-weight: 700;
+    border: 3px solid var(--dark-text);
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
+.tag:hover {
+    transform: translateY(-3px) rotate(-2deg);
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #ffeb3b 0%, #ffd54f 100%);
+}
 .project-link {
     color: var(--dark-text);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
     display: inline-block;
-    padding: 8px 20px;
-    background: var(--light-green);
-    border-radius: 15px;
-    border: 2px solid var(--dark-text);
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #81c784 0%, #66bb6a 100%);
+    border-radius: 25px;
+    border: 3px solid var(--dark-text);
     transition: all 0.3s ease;
+    box-shadow: 
+        5px 5px 0 rgba(255, 182, 193, 0.4),
+        5px 5px 0 3px var(--dark-text);
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    position: relative;
+    align-self: flex-start; /* Align button to the left */
+    margin-top: auto; /* Push to bottom */
+}
+
+.project-content > *:last-child {
+    margin-top: auto; /* Push last element (button) to bottom */
 }
 
 .project-link:hover {
-    background: var(--accent);
-    transform: translateX(5px);
+    background: linear-gradient(135deg, #ffb6c1 0%, #ff9eb5 100%);
+    transform: translateX(5px) translateY(-5px) rotate(-2deg);
+    box-shadow: 
+        8px 8px 0 rgba(184, 230, 245, 0.6),
+        8px 8px 0 3px var(--dark-text);
+}
+
+.project-link::after {
+    content: ' →';
+    transition: all 0.3s ease;
+}
+
+.project-link:hover::after {
+    content: ' ➜';
+    margin-left: 5px;
 }
 
 /* Publications */
@@ -524,42 +1062,509 @@ body {
     box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* ============================================
+   RESPONSIVE DESIGN FOR ALL DEVICES
+   ============================================ */
+
+/* Large Tablets and Small Desktops (768px - 1024px) */
+@media (max-width: 1024px) {
+    .page-content {
+        max-width: 90%;
+        padding: 0 15px;
+    }
+    
     .about-container {
         grid-template-columns: 1fr;
-        gap: 20px;
-    }
-        .section-title {
-        font-size: 28px;
-        padding: 15px 20px;
-        transform: rotate(0deg) !important; /* Remove rotation on mobile */
-        max-width: 95%;
+        gap: 30px;
     }
     
-    .section-title::before {
-        display: none; /* Remove shadow on mobile */
+    .chi-image {
+        width: 140px !important;
     }
-    .photo-frame {
-        max-width: 300px;
+    
+    .chi-1, .chi-2, .chi-9 {
+        left: -150px;
+    }
+    
+    .chi-3, .chi-13 {
+        right: -150px;
+    }
+    
+    .project-card {
+        flex-direction: column;
+    }
+    
+    .project-image {
+        width: 100%;
+        max-width: 400px;
         margin: 0 auto;
     }
-    
-    .manga-title {
-        font-size: 26px;
+}
+
+/* Tablets (481px - 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+        line-height: 1.6;
     }
     
-    .section-title {
-        font-size: 28px;
+    /* Navigation */
+    .manga-nav {
+        padding: 10px 0;
     }
     
     .nav-container {
         gap: 5px;
+        padding: 10px 15px;
     }
     
     .nav-link {
-        padding: 8px 12px;
+        padding: 8px 14px;
         font-size: 14px;
+    }
+    
+    /* Sections */
+    .manga-page {
+        padding: 80px 15px 40px;
+        min-height: auto;
+    }
+    
+    /* About Section */
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .photo-frame {
+        max-width: 280px;
+        margin: 0 auto;
+        transform: rotate(0deg);
+    }
+    
+    .profile-photo {
+        width: 100%;
+    }
+    
+    .manga-title {
+        font-size: 28px;
+        text-align: center;
+    }
+    
+    .bio-text {
+        font-size: 16px;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .manga-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Hide Chi images on smaller screens to reduce clutter */
+    .chi-image {
+        display: none;
+    }
+    
+    /* Cloud animations - make smaller */
+    .cloud {
+        width: 80px;
+        height: 40px;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 28px;
+        padding: 15px 20px;
+        transform: rotate(0deg) !important;
+        max-width: 95%;
+        margin: 0 auto 30px;
+    }
+    
+    .section-title::before {
+        display: none;
+    }
+    
+    /* Projects */
+    .project-card {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .project-image {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .project-card h3 {
+        font-size: 22px;
+    }
+    
+    .project-tags {
+        justify-content: center;
+    }
+    
+    .tag {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .project-link {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Publications */
+    .publication-item {
+        padding: 20px;
+    }
+    
+    .publication-item h3 {
+        font-size: 18px;
+    }
+    
+    .pub-links {
+        flex-wrap: wrap;
+    }
+    
+    /* Teaching */
+    .teaching-item {
+        padding: 20px;
+    }
+    
+    .teaching-item h3 {
+        font-size: 20px;
+    }
+    
+    /* Contact */
+    .contact-container {
+        padding: 30px 20px;
+    }
+    
+    .contact-message {
+        font-size: 16px;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .social-button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Page Numbers */
+    .page-number {
+        font-size: 14px;
+        padding: 8px 16px;
+        right: 20px;
+        bottom: 15px;
+    }
+    
+    /* Reduce emoji pattern size */
+    .green-page::before,
+    .green-page::after,
+    .green-page .page-content::before {
+        font-size: 35px;
+        line-height: 90px;
+        word-spacing: 40px;
+        letter-spacing: 20px;
+    }
+}
+
+/* Mobile Devices (320px - 480px) */
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+    
+    /* Navigation - More compact */
+    .nav-container {
+        gap: 3px;
+        padding: 8px 10px;
+    }
+    
+    .nav-link {
+        padding: 6px 10px;
+        font-size: 12px;
+        border-radius: 15px;
+    }
+    
+    /* Sections */
+    .manga-page {
+        padding: 70px 10px 30px;
+    }
+    
+    /* About Section */
+    .photo-frame {
+        max-width: 220px;
+    }
+    
+    .photo-frame::before,
+    .photo-frame::after {
+        font-size: 20px;
+        top: -10px;
+        left: -10px;
+    }
+    
+    .manga-title {
+        font-size: 24px;
+    }
+    
+    .bio-text {
+        font-size: 15px;
+    }
+    
+    .bio-text p {
+        margin-bottom: 12px;
+    }
+    
+    .manga-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    /* Section Titles */
+    .section-title {
+        font-size: 24px;
+        padding: 12px 16px;
+        margin-bottom: 20px;
+    }
+    
+    /* Projects */
+    .project-card {
+        padding: 15px;
+    }
+    
+    .project-card h3 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .project-description {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .tag {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+    
+    .project-link {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    /* Publications */
+    .publication-item {
+        padding: 15px;
+    }
+    
+    .publication-item h3 {
+        font-size: 16px;
+    }
+    
+    .pub-authors,
+    .pub-venue {
+        font-size: 13px;
+    }
+    
+    .small-button {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+    
+    /* Teaching */
+    .teaching-item {
+        padding: 15px;
+    }
+    
+    .teaching-item h3 {
+        font-size: 18px;
+    }
+    
+    .teaching-role,
+    .teaching-desc,
+    .teaching-period {
+        font-size: 14px;
+    }
+    
+    /* Contact */
+    .contact-container {
+        padding: 20px 15px;
+    }
+    
+    .contact-message {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .contact-detail {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    .contact-icon {
+        font-size: 18px;
+    }
+    
+    .social-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    /* Page Numbers */
+    .page-number {
+        font-size: 12px;
+        padding: 6px 12px;
+        right: 15px;
+        bottom: 10px;
+    }
+    
+    /* Further reduce decorative elements */
+    .cloud {
+        width: 60px;
+        height: 30px;
+    }
+    
+    .green-page::before,
+    .green-page::after,
+    .green-page .page-content::before {
+        font-size: 25px;
+        line-height: 70px;
+        word-spacing: 30px;
+        letter-spacing: 15px;
+        opacity: 0;
+    }
+    
+    @keyframes fadeInOut1,
+    @keyframes fadeInOut2,
+    @keyframes fadeInOut3 {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 0.08; }
+    }
+}
+
+/* Large Screens and TVs (1440px+) */
+@media (min-width: 1440px) {
+    .page-content {
+        max-width: 1200px;
+    }
+    
+    .about-container {
+        gap: 60px;
+    }
+    
+    .manga-title {
+        font-size: 52px;
+    }
+    
+    .bio-text {
+        font-size: 20px;
+        line-height: 1.8;
+    }
+    
+    .section-title {
+        font-size: 46px;
+        padding: 25px 40px;
+    }
+    
+    .project-card {
+        padding: 35px;
+    }
+    
+    .project-card h3 {
+        font-size: 30px;
+    }
+    
+    .project-description {
+        font-size: 18px;
+        line-height: 1.8;
+    }
+    
+    .publication-item,
+    .teaching-item {
+        padding: 30px;
+    }
+    
+    .contact-container {
+        padding: 50px;
+    }
+}
+
+/* Ultra-Wide Screens and Large TVs (1920px+) */
+@media (min-width: 1920px) {
+    .page-content {
+        max-width: 1400px;
+    }
+    
+    body {
+        font-size: 20px;
+    }
+    
+    .manga-title {
+        font-size: 60px;
+    }
+    
+    .section-title {
+        font-size: 52px;
+    }
+    
+    .project-card h3 {
+        font-size: 34px;
+    }
+}
+
+/* Landscape Orientation for Tablets */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .manga-page {
+        min-height: auto;
+        padding: 80px 20px 40px;
+    }
+    
+    .about-container {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 30px;
+    }
+    
+    .chi-image {
+        display: block;
+        width: 120px !important;
+    }
+}
+
+/* Portrait Orientation for Mobile */
+@media (max-width: 768px) and (orientation: portrait) {
+    .manga-page {
+        padding-top: 80px;
+    }
+    
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Accessibility - Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .chi-image:hover,
+    .photo-frame:hover,
+    .nav-link:hover,
+    .manga-button:hover,
+    .project-link:hover {
+        transform: none !important;
     }
 }
 
@@ -618,9 +1623,16 @@ body {
 #projects .section-title {
     font-family: 'Courier Prime', monospace;
     font-weight: 700;
-    background: #f0fff0; /* Honeydew */
-    border: 3px solid #006400; /* Dark green */
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+    border: 4px solid #2e7d32; /* Dark green */
     transform: rotate(1.2deg);
+    box-shadow: 
+        8px 8px 0 rgba(200, 230, 201, 0.5),
+        8px 8px 0 4px var(--dark-text);
+}
+
+#projects .section-title:hover {
+    transform: rotate(-1deg) scale(1.05);
 }
 
 #publications .section-title {
